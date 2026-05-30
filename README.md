@@ -95,6 +95,11 @@ These categories can be expanded by editing `i-o.json`.
 - No persistent memory.
 - Workspace path is hardcoded.
 
+## Updates Soom
+
+-Dynamic workspace path
+-Improve response generation
+
 ## License
 
 This project is distributed under the Axion Dev License (2025). See `LICENSE.txt` for details.

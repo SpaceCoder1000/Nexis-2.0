@@ -95,7 +95,7 @@ These categories can be expanded by editing `i-o.json`.
 - No persistent memory.
 - Workspace path is hardcoded.
 
-## Updates Soom
+## Updates Soon
 
 - Dynamic workspace path.
 - Improve response generation.

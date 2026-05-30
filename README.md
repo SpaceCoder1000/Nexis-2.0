@@ -21,7 +21,8 @@ Nexis is a lightweight terminal assistant that responds to user input by matchin
 ├── Main.py        # Main chatbot application
 ├── i-o.json       # Input keywords and response database
 ├── LICENSE.txt    # License information
-└── n2af.txt       # Workspace access marker file
+├── n2af.txt       # Workspace access marker file
+└── README.md      # Project information
 ```
 
 ## Requirements

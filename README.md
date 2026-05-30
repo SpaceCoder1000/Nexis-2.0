@@ -97,8 +97,8 @@ These categories can be expanded by editing `i-o.json`.
 
 ## Updates Soom
 
--Dynamic workspace path
--Improve response generation
+- Dynamic workspace path.
+- Improve response generation.
 
 ## License
 

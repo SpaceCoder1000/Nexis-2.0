@@ -1,0 +1,2 @@
+This file exists to allow the program to read/write/destroy files in this workspace
+-Axion Dev™(2025-2025)

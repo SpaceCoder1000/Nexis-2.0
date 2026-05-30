@@ -1,0 +1,197 @@
+{
+    "inputs": {
+        "greetings": [
+            "hello",
+            "hi",
+            "hey",
+            "yo",
+            "sup",
+            "howdy",
+            "welcome"
+        ],
+
+        "farewells": [
+            "bye",
+            "goodbye",
+            "later",
+            "cya",
+            "farewell"
+        ],
+
+        "thanks": [
+            "thanks",
+            "thankyou",
+            "thx",
+            "ty"
+        ],
+
+        "yes": [
+            "yes",
+            "yeah",
+            "yep",
+            "sure",
+            "okay"
+        ],
+
+        "no": [
+            "no",
+            "nope",
+            "nah"
+        ],
+
+        "help": [
+            "help",
+            "assist",
+            "support"
+        ],
+
+        "happy": [
+            "happy",
+            "great",
+            "awesome",
+            "good"
+        ],
+
+        "sad": [
+            "sad",
+            "upset",
+            "down",
+            "unhappy"
+        ],
+
+        "angry": [
+            "angry",
+            "mad",
+            "annoyed"
+        ],
+
+        "joke": [
+            "joke",
+            "funny"
+        ],
+
+        "music": [
+            "music",
+            "song"
+        ],
+
+        "game": [
+            "game",
+            "gaming"
+        ],
+
+        "food": [
+            "food",
+            "hungry"
+        ],
+
+        "weather": [
+            "weather",
+            "rain",
+            "sunny"
+        ],
+
+        "time": [
+            "time"
+        ],
+
+        "name": [
+            "name",
+            "whoareyou"
+        ]
+    },
+
+    "outputs": {
+        "greetings": [
+            "Hello there",
+            "Hi",
+            "Hey",
+            "Nice to see you",
+            "Welcome"
+        ],
+
+        "farewells": [
+            "Goodbye",
+            "See you later",
+            "Take care",
+            "Have a good day"
+        ],
+
+        "thanks": [
+            "You are welcome",
+            "No problem",
+            "Happy to help"
+        ],
+
+        "yes": [
+            "Great",
+            "Awesome",
+            "Sounds good"
+        ],
+
+        "no": [
+            "Alright",
+            "Okay",
+            "No worries"
+        ],
+
+        "help": [
+            "How can I help",
+            "What do you need",
+            "Tell me more"
+        ],
+
+        "happy": [
+            "Glad to hear that",
+            "That is great",
+            "Awesome"
+        ],
+
+        "sad": [
+            "I hope things get better",
+            "Sorry to hear that",
+            "Wishing you well"
+        ],
+
+        "angry": [
+            "That sounds frustrating",
+            "I understand",
+            "I hope it improves"
+        ],
+
+        "joke": [
+            "Why did the computer stay cold because it left its windows open",
+            "I would tell a joke about coding but it has too many bugs"
+        ],
+
+        "music": [
+            "Music can really set the mood",
+            "What kind of music do you like"
+        ],
+
+        "game": [
+            "What games do you play",
+            "Gaming can be a lot of fun"
+        ],
+
+        "food": [
+            "What is your favorite food",
+            "Hope you get something tasty"
+        ],
+
+        "weather": [
+            "Weather can change quickly",
+            "Hopefully it is nice where you are"
+        ],
+
+        "time": [
+            "I can help with time related questions"
+        ],
+
+        "name": [
+            "I am Nexis",
+            "I am Nexis Your personal assistant",
+            "I am Nexis and I'm Here to help."
+        ]
+    }
+}

@@ -6,7 +6,7 @@
         "MODEL_PATH" : "s-t/vosk"
     },
     "TTS" : {
-        "voices" : "ryan"
+        "voice" : "ryan"
     },
     "STT" : {
         "model" : "vosk-model-small-en-us-0.15"
@@ -15,9 +15,10 @@
         "wake-word" : "Nexis",
         "listen-for-wake-words" : [
             "nexus",
-            "lexas",
+            "lexus",
             "texas",
-            "this"
+            "this",
+            "excess"
         ],
         "colors" : {
             "start-up-splash" : "34",

@@ -90,8 +90,6 @@ These are subject to change it is best to check `i-o.json` for the categories.
 
 ## Known Limitations
 
-- Uses simple substring matching.
-- Only one category can be matched per message.
 - No natural language understanding.
 - No persistent memory.
 - Workspace path is hardcoded.

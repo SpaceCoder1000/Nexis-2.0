@@ -1,20 +1,36 @@
 # Licensed under Axion Dev License 2025 – see LICENSE.txt for details
+#Import
 
+import time
+import random
+import subprocess
+from piper.voice import PiperVoice
+import wave
+import winsound
+import pyttsx3
+import re
+import platform
+from vosk import Model, KaldiRecognizer
+import sounddevice as sd
 import json
 import os
 
 def ufc():
-    global voice, stt_model
+    global stt_model
     global WKSP_PATH, DATA_PATH, VOICE_PATH, MODEL_PATH
     global wake, listen_words
     global cc_ss, cc_t, cc_s, cc_f
     global cc_n, cc_u, cc_info, cc_warn, cc_error, cc_r
+    global voice, REC, model
 
-    with open(f"{os.getcwd}CONFIG.json", "r") as f:
+    with open(f"{os.getcwd()}/CONFIG.json", "r") as f:
         config = json.load(f)
 
+    old_voice_path = globals().get("VOICE_PATH")
+    old_model_path = globals().get("MODEL_PATH")
+
     # TTS
-    voice = config["TTS"]["voice"]
+    voice_name = config["TTS"]["voice"]
 
     # STT
     stt_model = config["STT"]["model"]
@@ -27,7 +43,7 @@ def ufc():
     VOICE_PATH = (
         f"{WKSP_PATH}/"
         f"{config['PATHS']['VOICE_PATH']}/"
-        f"en_US-{voice}-low.onnx"
+        f"en_US-{voice_name}-low.onnx"
     )
 
     MODEL_PATH = (
@@ -38,7 +54,7 @@ def ufc():
 
     # NEXIS
     wake = config["Nexis"]["wake-word"]
-    listen_words = config["Nexis"]["listen-for-wake-words"]
+    listen_words = tuple(config["Nexis"]["listen-for-wake-words"])
 
     # COLORS
     cc_ss = config["Nexis"]["colors"]["start-up-splash"]
@@ -53,82 +69,69 @@ def ufc():
     cc_warn = config["Nexis"]["colors"]["warn"]
     cc_error = config["Nexis"]["colors"]["error"]
 
+    # Only reload STT if model changed
+    if MODEL_PATH != old_model_path:
+        print("Reloading Vosk model...")
+        model = Model(MODEL_PATH)
+        REC = KaldiRecognizer(model, 16000)
+
+    # Only reload TTS if voice changed
+    if VOICE_PATH != old_voice_path:
+        print("Reloading Piper voice...")
+        voice = PiperVoice.load(VOICE_PATH)
+
+ufc()
+
 print(f"""
-    \033[{cc_ss}
+    \033[{cc_ss}\n
     +++========================================================+++
         __  _  ____  __  __  __   _____     _____       _____
        |  \| || ___| \ \/ / |  | |  ___|   |___  |     |  _  |
        |     || ___|  |  |  |  | |___  |   |  ___|  _  | |_| |
        |_|\__||____| /_/\_\ |__| |_____|   |_____| |_| |_____|
-
+       
     +++=======================Axion Dev========================+++
     \033[0m
-      """)
+    """)
 
-print("\033[36m Loading \n \033[0m")
-
-#Import
-
-import time
-import random
-import subprocess
-from piper.voice import PiperVoice
-import wave
-import winsound
-import pyttsx3
-import re
-import platform
-from vosk import Model, KaldiRecognizer
-import sounddevice as sd
-
-#Environment Variables
-
-WKSP_PATH = os.getcwd() 
-DATA_PATH = f"{WKSP_PATH}/data"
-VOICE_PATH = f"{WKSP_PATH}/voices/en_US-ryan-low.onnx"
-MODEL_PATH = f"{WKSP_PATH}/vosk-model-small-un-us-0.15"
-model = Model(MODEL_PATH)
-REC = KaldiRecognizer(model, 16000)
-
-voice = PiperVoice.load(VOICE_PATH)
-
+print(f"\033[{cc_t}Loading...\033[0m")
 
 #Check if Files Exist and create
 
-print("\033[36mChecking Files\033[0m")
+print(f"\033[{cc_t}checking Files\033[0m")
 
 start = True
 #==========
 
-print("\033[36m===Acess File===\033[0m")
+print(f"\033[{cc_t}===Acess File===\033[0m")
 
 if os.path.exists(WKSP_PATH + "n2af.txt"):
-    print("\033[32mFound\033[0m")
+    print(f"\033[{cc_s}Found\033[0m")
 else:
-    print("\033[31mFile not found aborting\033[0m")
+    print(f"\033[{cc_f}File not found aborting\033[0m")
     start = False
 
 #==========
 
-print("\033[36m===LICENSE===\033[0m")
+print(f"\033[{cc_t}===LICENSE===\033[0m")
 
 license = False
 
 if os.path.exists(WKSP_PATH + "LICENSE.txt"):
-    print("\033[32mFound\033[0m")
+    print(f"\033[{cc_s}Found\033[0m")
 else:
-    print("\033[31mFile not found aborting\033[0m")
+    print(f"\033[{cc_f}File not found aborting\033[0m")
     start = False
 
 #==========
 
-print("\033[36m===I/O===\033[0m")
+print(f"\033[{cc_t}===I/O===\033[0m")
 
 license = False
 if os.path.exists(WKSP_PATH + "i-o.json"):
-    print("\033[32mFound\033[0m")
+    print(f"\033[{cc_s}Found\033[0m")
 else:
-    print("\033[31mFile not found aborting\033[0m")
+    print(f"\033[{cc_f}File not found aborting\033[0m")
     start = False
 
 #===================================
@@ -136,7 +139,7 @@ else:
 #Def listen
 
 def listen():
-    print("\033[93mListening for 'hey nexis'...\033[0m")
+    print(f"\033[{cc_info}Listening for 'hey {wake}'...\033[0m")
 
     with sd.RawInputStream(
         samplerate=16000,
@@ -156,9 +159,9 @@ def listen():
                 if not text:
                     continue
 
-                print("\033[92m[you] - " + text + "\033[0m")
+                print(f"\033[{cc_u}[you] - {text}\033[0m")
 
-                wake_words = ("nexus", "texas", "this", "lexus")
+                wake_words = listen_words
 
                 for wake_word in wake_words:
                     pos = text.find(wake_word)
@@ -186,7 +189,7 @@ def input_user(prompt):
     user_input = listen()
 
 def output_n(output):
-    print("\033[94m" + "[Nexis] - " + output + "\033[0m")
+    print(f"\033[{cc_n}[Nexis] - {output}\033[0m")
 
 #Def Gen Output
 
@@ -254,7 +257,7 @@ def main():
     speak(output)
     output_n(output)
     input_user("")
-    #ufc("CONFIG.json")
+    ufc()
 
 #Start?
 

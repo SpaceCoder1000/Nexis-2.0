@@ -98,7 +98,6 @@ These categories can be expanded by editing `i-o.json`.
 ## Updates Soon
 
 - Dynamic workspace path.
-- Improve response generation.
 
 ## License
 

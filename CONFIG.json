@@ -1,0 +1,34 @@
+{
+    "PATHS": {
+        "WKSP_PATH" : "D:/",
+        "DATA_PATH" : "data",
+        "VOICE_PATH" : "s-t/voice",
+        "MODEL_PATH" : "s-t/vosk"
+    },
+    "TTS" : {
+        "voices" : "ryan"
+    },
+    "STT" : {
+        "model" : "vosk-model-small-en-us-0.15"
+    },
+    "Nexis" : {
+        "wake-word" : "Nexis",
+        "listen-for-wake-words" : [
+            "nexus",
+            "lexas",
+            "texas",
+            "this"
+        ],
+        "colors" : {
+            "start-up-splash" : "34",
+            "task" : "36m",
+            "success" : "32m",
+            "fail" : "31m",
+            "nexis" : "94m",
+            "user" : "92m",
+            "info" : "1;96m",
+            "warn" : "1;93m",
+            "error" : "1;91m"
+        }
+    }
+}

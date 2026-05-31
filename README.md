@@ -78,6 +78,7 @@ The default configuration includes:
 - Name
 
 These categories can be expanded by editing `i-o.json`.
+These are subject to change it is best to check `i-o.json` for the categories.
 
 ## How It Works
 

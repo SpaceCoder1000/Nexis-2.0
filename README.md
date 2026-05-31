@@ -1,103 +1,121 @@
 # Nexis
 
-A simple rule-based console chatbot written in Python by Axion Dev.
+Nexis is a lightweight offline voice assistant written in Python.
 
-## Overview
+The goal of the project is to provide a fast and simple assistant that can run entirely on local hardware without requiring cloud services, subscriptions, or internet access for voice processing.
 
-Nexis is a lightweight terminal assistant that responds to user input by matching keywords against predefined categories stored in a JSON file. Responses are selected randomly from a list associated with the detected category.
+Nexis uses:
+
+* Piper for text-to-speech
+* Vosk for speech-to-text
+* JSON-based response training
+* A configurable wake-word system
 
 ## Features
 
-- Keyword-based intent detection
-- Randomized responses
-- JSON-configurable inputs and outputs
-- Simple command-line interface
-- Minimal dependencies (Python standard library only)
+* Offline speech recognition
+* Offline text-to-speech
+* Wake-word activation
+* Configurable voices
+* Customizable responses
+* Cross-platform Python code
+* Lightweight and easy to modify
 
-## Project Structure
+## How It Works
 
-```
-.
-├── Main.py        # Main chatbot application
-├── i-o.json       # Input keywords and response database
-├── LICENSE.txt    # License information
-└── n2af.txt       # Workspace access marker file
-```
+Nexis continuously listens for a wake word.
+
+When a wake word is detected, the assistant begins listening for a command. The command is processed and matched against its training data before a response is generated and spoken aloud.
+
+All processing happens locally on your device.
 
 ## Requirements
 
-- Python 3.x
-- The following files must exist in the configured workspace directory:
-  - `i-o.json`
-  - `LICENSE.txt`
-  - `n2af.txt`
+* Python 3.11 or newer
+* Piper
+* Vosk
+* A supported Piper voice
+* A supported Vosk model
 
-## Configuration
+## Installation
 
-The application currently uses:
+### 1. Clone or Download the Project
 
-```python
-WKSP_DIR = "D:/"
+Download the source code and place it in a folder of your choice.
+
+### 2. Install Python Dependencies
+
+```bash
+pip install piper-tts vosk sounddevice
 ```
 
-Ensure all required files are located in that directory, or update the value to match your environment.
+Additional dependencies may be required depending on your operating system and audio configuration.
 
-## Running the Program
+### 3. Download Voice Models
+
+Instructions can be found in:
+
+```text
+s-t/voice/README.md
+```
+
+### 4. Download Speech Recognition Models
+
+Instructions can be found in:
+
+```text
+s-t/vosk/README.md
+```
+
+### 5. Configure Nexis
+
+Edit:
+
+```text
+CONFIG.json
+```
+
+to select your preferred voice, wake word, and model configuration.
+
+## Running Nexis
+
+Start the assistant with:
 
 ```bash
 python Main.py
 ```
 
-After startup, Nexis will prompt:
+Once running, say the configured wake word followed by your command.
+
+Example:
 
 ```text
-[Nexis] - How May I help Today
+Hey Nexis
+What is your name?
 ```
 
-Type messages and receive responses based on matching keywords.
+## Project Structure
 
-## Supported Categories
+```text
+Main.py        Main application
+CONFIG.json    Configuration settings
+i-o.json       Response training data
+LICENSE.txt    License information
+s-t/           Speech-to-text and text-to-speech resources
+```
 
-The default configuration includes:
+## Design Goals
 
-- Greetings
-- Farewells
-- Thanks
-- Yes / No
-- Help
-- Happy
-- Sad
-- Angry
-- Jokes
-- Music
-- Games
-- Food
-- Weather
-- Time
-- Name
+Nexis was created with a few simple goals:
 
-These categories can be expanded by editing `i-o.json`.
+* Work offline
+* Be easy to understand
+* Be easy to modify
+* Have minimal dependencies
+* Run on low-end hardware
 
-## How It Works
-
-1. User enters text.
-2. Input is converted to lowercase.
-3. Nexis searches for matching keywords in `i-o.json`.
-4. The first matching category is selected.
-5. A random response from that category is returned.
-
-## Known Limitations
-
-- Uses simple substring matching.
-- Only one category can be matched per message.
-- No natural language understanding.
-- No persistent memory.
-- Workspace path is hardcoded.
+The project is intentionally simple and is designed to be a foundation that can be expanded with additional features and integrations.
 
 ## License
 
-This project is distributed under the Axion Dev License (2025). See `LICENSE.txt` for details.
-
-## Author
-
-**Axion Dev** (2025)
+This project is licensed under the Axion Dev License. See `LICENSE.txt` for details.

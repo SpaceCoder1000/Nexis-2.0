@@ -3,7 +3,8 @@
         "WKSP_PATH" : "D:/",
         "DATA_PATH" : "data",
         "VOICE_PATH" : "s-t/voice",
-        "MODEL_PATH" : "s-t/vosk"
+        "MODEL_PATH" : "s-t/vosk",
+        "LOG_PATH" : "log/io log.md"
     },
     "TTS" : {
         "voice" : "ryan"
@@ -14,10 +15,11 @@
     "Nexis" : {
         "wake-word" : "Nexis",
         "listen-for-wake-words" : [
+            "nexis",
             "nexus",
             "lexus",
+            "lexis",
             "texas",
-            "this",
             "excess"
         ],
         "colors" : {
@@ -30,6 +32,16 @@
             "info" : "1;96m",
             "warn" : "1;93m",
             "error" : "1;91m"
+        },
+        "recording" : {
+            "store text inputed" : {
+                "record" : true,
+                "timestamp" : true
+            },
+            "store text outputed" : {
+                "record" : true,
+                "timestamp" : true
+            }
         }
     }
 }

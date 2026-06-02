@@ -130,6 +130,21 @@
         "Ask about feelings": [
             "how are you",
             "how's it been"
+        ],
+        "time" : [
+            "what time",
+            "the time"
+        ],
+        "day" : [
+            "what day",
+            "the day"
+        ],
+        "date" : [
+            "what date",
+            "the day"
+        ],
+        "search" : [
+            "search"
         ]
     },
 
@@ -250,6 +265,21 @@
             "I am doing well, thanks for asking",
             "Im doing great, how about you",
             "I am doing awesome, thanks"
+        ],
+        "time" : [
+            "The time is {time}",
+            "The current time is {time}",
+            "The time is {time}",
+            "Right now it is {time}"
+        ],
+        "day" : [
+            "The day is {day}",
+            "Today is {day}",
+            "It is {day}"
+        ],
+        "search" : [
+            "Here are some results for that, {search}.",
+            "A result I foud was {search}."
         ]
     }
 }

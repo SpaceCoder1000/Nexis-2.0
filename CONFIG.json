@@ -34,14 +34,23 @@
             "error" : "1;91m"
         },
         "recording" : {
-            "store text inputed" : {
+            "store-text-inputed" : {
                 "record" : true,
                 "timestamp" : true
             },
-            "store text outputed" : {
+            "store-text-outputed" : {
+                "record" : true,
+                "timestamp" : true
+            },
+            "store-errors" : {
                 "record" : true,
                 "timestamp" : true
             }
+        },
+        "online-mode" : {
+            "online" : true,
+            "search" : true,
+            "restricted_mode" : false
         }
     }
 }

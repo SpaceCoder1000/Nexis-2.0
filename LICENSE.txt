@@ -13,4 +13,4 @@ Unauthorized distribution of this software, or modified versions without proper 
 General:
 This license does not grant permission to use trademarks, logos, or brand names of Axion Dev beyond attribution as stated above.
 
--Axion Dev(2025-2025)
+-Axion Dev(2025-2026)
